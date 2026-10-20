@@ -1,15 +1,15 @@
-
 #pragma once
 
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "InteractableInterface.h"
 #include "InteractionDoor.generated.h"
 
 class UStaticMeshComponent;
 class USceneComponent;
 
 UCLASS()
-class LAB06_API AInteractionDoor : public AActor
+class LAB06_API AInteractionDoor : public AActor, public IInteractableInterface
 {
 	GENERATED_BODY()
 
@@ -20,6 +20,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Interaction")
 	void SetDoorOpen(bool bShouldOpen);
+	
+	virtual void Interact_Implementation(AActor* InteractingActor) override;
 
 protected:
 	virtual void BeginPlay() override;

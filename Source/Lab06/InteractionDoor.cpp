@@ -96,3 +96,14 @@ void AInteractionDoor::Tick(float DeltaTime)
 
     SetActorLocation(NewLocation);
 }
+
+void AInteractionDoor::Interact_Implementation(
+    AActor* InteractingActor)
+{
+    UE_LOG(LogTemp, Display,
+        TEXT("Door received an interaction event."));
+
+    // Toggle the door open or closed.
+    SetDoorOpen(!bIsOpen);
+}
+
